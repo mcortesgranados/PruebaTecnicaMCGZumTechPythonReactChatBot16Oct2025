@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "chatbot-lambda"
+version = "0.1.0"
+description = "Chatbot Lambda usando FastAPI y OpenAI API"
+authors = ["Manuela Cortés <tu-email@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "chatbot" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.0"
+uvicorn = { extras = ["standard"], version = "^0.25.0" }
+pydantic = "^2.3"
+httpx = "^1.2.0"
+sqlite-utils = "^3.42.0"  # para persistencia local opcional
+openai = "^1.29.0"         # acceso a OpenAI API
+boto3 = "^1.31.0"          # si planeas publicar eventos en AWS (SNS/SQS)
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.4"
+pytest-asyncio = "^0.21"
+black = "^24.3"
+isort = "^6.0"
+
+[build-system]
+requires = ["poetry-core>=1.6.0"]
+build-backend = "poetry.core.masonry.api"
