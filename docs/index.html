@@ -1,0 +1,170 @@
+```html
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EJERCICIO DE EVALUACIÓN - Xumtech (Requisitos REQ-01...REQ-30)</title>
+  <style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #fafbfc; color: #23272f; margin: 0; padding: 0; }
+  .container { max-width: 950px; margin: 40px auto; background: #fff; box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-radius: 10px; padding: 32px 40px; }
+  h1 { color: #1565c0; }
+  h2 { color: #2e7d32; margin-top: 32px; }
+  h3 { color: #7b1fa2; margin-top: 24px; }
+  .note { background: #e3f2fd; border-left: 4px solid #1976d2; padding: 16px 20px; margin: 18px 0; border-radius: 7px; }
+  .note ul { list-style: disc inside; margin: 0; padding-left: 1.2em; }
+  .note li { margin-bottom: 3px; line-height: 1.35; }
+  .note p { margin: 0 0 6px 0; line-height: 1.5; }
+  .footer { text-align: right; color: #888; font-size: 1em; margin-top: 40px; }
+  .tag { background: #e3f2fd; color: #1565c0; border-radius: 4px; padding: 3px 8px; margin-left: 6px; font-size: 0.95em; }
+  dt { color: #2e7d32; font-weight: bold; margin-top: 10px; }
+  dd { margin-bottom: 10px; }
+  .params table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+  .params th, .params td { border: 1px solid #ccc; padding: 6px; }
+  .important { background: #fffde7; border-left: 4px solid #fbc02d; padding: 12px 18px; margin: 18px 0; border-radius: 5px; }
+  .sideEffects ul, .solid ul { margin: 0; padding-left: 20px; }
+  @media (max-width: 600px) { .container { padding: 16px 8px; } }
+  /* Code block styling */
+  pre { background: #f6f8fa; padding: 14px; border-radius: 8px; overflow: auto; font-size: 0.92em; }
+  code { font-family: Consolas, 'Courier New', monospace; }
+  .row { display:flex; gap:20px; flex-wrap:wrap; }
+  .col { flex:1 1 420px; }
+  /* Small visual helpers */
+  .endpoint { border: 1px solid #e0e0e0; padding: 12px 14px; border-radius: 8px; background: #fff; box-shadow: 0 3px 8px rgba(0,0,0,0.04); }
+  .json { white-space: pre; font-family: Consolas, 'Courier New', monospace; font-size: 0.95em; }
+  .success { color: #2e7d32; font-weight: 600; }
+  .error { color: #c62828; font-weight: 600; }
+  </style>
+</head>
+<body>
+<div class="container">
+    <h1>EJERCICIO DE EVALUACIÓN – Xumtech</h1>
+    <p class="note"><strong>Nota:</strong> A continuación se transcribe de manera literal y estructurada por requerimientos el enunciado del ejercicio.</p>
+
+    <h2>PROPÓSITO DEL EJERCICIO</h2>
+
+<dl>
+      <dt>REQ-01</dt>
+      <dd>El propósito de esta evaluación es que las y los candidatos puedan mostrar sus habilidades y 
+        capacidades consultivas a un panel de entrevistas en una sesión posterior. Para este ejercicio, se 
+        dispone de 3 días calendario (después de haber recibido el enunciado) para prepararse y 
+        preparar todo el material necesario. Al cabo de estos 3 días, el candidato debe enviar a) un  
+        video haciendo un demo de su solución y b) el código fuente al equipo de reclutamiento de 
+        Xumtech por medio de correo electrónico, el cual le contactará nuevamente para coordinar la 
+        fecha de presentación con el panel de entrevistas. Para el video, puede utilizar la herramienta 
+      que más le convenga, pero un video privado de YouTube basta. </dd>
+
+      <dt>REQ-02</dt>
+      <dd>Para la siguiente asignación, se permitirá utilizar cualquier tecnología de preferencia del 
+        candidato(a), sea basada en tecnologías nube, entorno cliente-servidor, o corriendo de forma 
+        local en el equipo. Si se utiliza algún componente licenciado, el candidato(a) es responsable de 
+        cumplir con lo requerido por el fabricante. Se permite utilizar bibliotecas y/o componentes de 
+        desarrollo de acceso libre y gratuito para simplificar la solución diseñada. La única restricción es 
+        que no se permite utilizar ninguna tecnología específicamente diseñada para Chatbots, pues 
+        esto brindaría una solución que no requiere construcción de componentes o desarrollo de 
+      software e impediría realizar la evaluación buscada. </dd>
+
+      <dt>REQ-03</dt>
+      <dd>Es importante tener total claridad de las decisiones de diseño tomadas, y conocer con propiedad 
+        la función de cada uno de los elementos utilizados. En definitiva, el conocimiento total del código 
+        generado será imprescindible al momento de realizar la revisión con el equipo reclutador. 
+        Adicionalmente, se te solicitará realizar ajustes o mejoras durante la entrevista. Si deseas incluir <br>
+        funciones no especificadas entre los requerimientos que consideras importantes, ¡son 
+        bienvenidas! Sin embargo, asegúrate antes de haber implementado las funciones requeridas 
+      que son esenciales para el equipo de reclutamiento. </dd>
+
+      <dt>REQ-04</dt>
+      <dd>Este ejercicio, aunque en principio busca evaluar el conjunto de habilidades técnicas e 
+        investigativas del candidato (a) entorno a plataformas de desarrollo web, cuenta con un fuerte 
+        componente de evaluación que va más allá del conocimiento técnico, y que incluye aspectos 
+        como capacidad resolutiva, tolerancia a la presión, toma de decisiones y ambigüedad. Es por 
+        esta razón que, si al cumplirse el tiempo límite, el candidato(a) no posee una solución 
+        suficientemente funcional o completa, se insta a siempre presentar su resultado, pues el objetivo 
+      es examinar y discutir la solución durante la entrevista. Si tienes alguna duda sobre la confección del ejercicio que te impide realizar tu entregable, 
+      ponte en contacto con tu reclutador(a). Recuerda que no responderemos dudas directamente 
+      relacionadas con la solución, pues eso forma parte de la evaluación. <br>
+    </dd>
+  </dl>
+
+    <h2>INSTRUCCIONES GENERALES</h2>
+
+<dl>
+      <dt>REQ-05</dt>
+      <dd>Este ejercicio consiste en desarrollar un Bot conversacional o Chatbot, el cual deberá responder 
+      a al menos 10 consultas realizadas por el usuario. </dd>
+
+      <dt>REQ-06</dt>
+      <dd>Debe ejecutarse en un navegador web sin requerir la instalación de ningún componente 
+      adicional o de terceros por parte del usuario.</dd>
+
+      <dt>REQ-07</dt>
+      <dd>presentar el bot corriendo en cualquiera de los navegadores populares (Firefox, Chrome, 
+        Edge, Safari) en su última versión. No se requiere realizar pruebas en múltiples 
+      navegadores, seleccionarás un navegador y harás la presentación en este. </dd>
+
+      <dt>REQ-08</dt>
+      <dd>Debe mostrarse una página web en blanco o con algún contenido ligero, y en esa 
+        página tener empotrada la ventana de chat. Esta puede abrirse automáticamente al 
+      cargar la página, o por medio de alguna acción del usuario. </dd>
+
+      <dt>REQ-09</dt>
+      <dd>La ventana de chat debe permitir al usuario digitar las consultas que desea hacer al bot. 
+        El procesamiento de la consulta no debe tardar más de 5 segundos después de haber 
+        enviado el mensaje. <br>
+      </dd>
+
+      <dt>REQ-10</dt>
+      <dd>Aunque para efectos de la entrega solo debe mostrarse un máximo de 10 posibles 
+        preguntas al bot, se debe detallar en la entrevista el proceso para ingresar nuevas 
+        preguntas en el bot (aprendizaje o entrenamiento). <br>
+      </dd>
+
+      <dt>REQ-11</dt>
+      <dd>El bot debe realizar algún nivel de contextualización de la consulta del usuario, indicando 
+        al usuario si la consulta que realiza no fue comprendida, o si corresponde a alguna de las 
+        posibles consultas que puede responder. <br>
+      </dd>
+
+      <dt>REQ-12</dt>
+      <dd>Las consultas que puede responder el bot deben estar almacenadas en algún repositorio 
+        de almacenamiento, sea una base de datos, archivo, o similar. Cualquier otra 
+        configuración o información que se considere necesaria persistir, debe incluirse en este <br>
+        repositorio. <br>
+      </dd>
+
+      <dt>REQ-13</dt>
+      <dd>La comunicación entre el bot y el repositorio de almacenamiento debe realizarse por 
+        medio de algún servicio web tipo REST. El acceso a este servicio web debe ser seguro, 
+        pensando en las mejores prácticas de comunicación vía HTTP. <br>
+      </dd>
+
+      <dt>REQ-14</dt>
+      <dd>Hablaremos de tus decisiones de diseño y elección de componentes para construir tu 
+        Chatbot. Debes justificar tus decisiones y plantear posibles mejoras. <br>
+      </dd>
+
+      <dt>REQ-15</dt>
+      <dd>Buscaremos entender cómo tu solución puede volverse escalable, qué cambios crees se 
+        deben hacer para que el Chatbot pueda recibir otras funcionalidades y pueda ser <br>
+    utilizado por miles de usuarios. </dd>
+    </dl>
+
+    <dl>
+      <dt>REQ-16</dt>
+      <dd>Detallar sobre las principales áreas en las que crees que tu solución fue muy limitada, o 
+        con lo que estás menos conforme de tu respuesta, ¿qué habrías hecho diferente? <br>
+      </dd>
+    </dl>
+
+    <dl>
+      <dt>REQ-17</dt>
+      <dd>Aspectos de seguridad importantes relacionados con la aplicación, detallar posibles 
+        riesgos, capacidades futuras de autenticación u otros casos de uso que pueden 
+      comprometer aspectos de seguridad. </dd>
+  </dl>
+    <p>Entregables</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>
+```
