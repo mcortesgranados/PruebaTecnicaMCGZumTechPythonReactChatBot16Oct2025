@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Restricción y uso de OpenAI — Explicación</title>
+  <style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #fafbfc; color: #23272f; margin: 0; padding: 0; }
+  .container { max-width: 950px; margin: 40px auto; background: #fff; box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-radius: 10px; padding: 32px 40px; }
+  h1 { color: #1565c0; }
+  h2 { color: #2e7d32; margin-top: 32px; }
+  h3 { color: #7b1fa2; margin-top: 24px; }
+  .note { background: #e3f2fd; border-left: 4px solid #1976d2; padding: 16px 20px; margin: 18px 0; border-radius: 7px; }
+  .note ul { list-style: disc inside; margin: 0; padding-left: 1.2em; }
+  .note li { margin-bottom: 3px; line-height: 1.35; }
+  .note p { margin: 0 0 6px 0; line-height: 1.5; }
+  .footer { text-align: right; color: #888; font-size: 1em; margin-top: 40px; }
+  .tag { background: #e3f2fd; color: #1565c0; border-radius: 4px; padding: 3px 8px; margin-left: 6px; font-size: 0.95em; }
+  dt { color: #2e7d32; font-weight: bold; margin-top: 10px; }
+  dd { margin-bottom: 10px; }
+  .params table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+  .params th, .params td { border: 1px solid #ccc; padding: 6px; }
+  .important { background: #fffde7; border-left: 4px solid #fbc02d; padding: 12px 18px; margin: 18px 0; border-radius: 5px; }
+  .sideEffects ul, .solid ul { margin: 0; padding-left: 20px; }
+  @media (max-width: 600px) { .container { padding: 16px 8px; } }
+  /* Code block styling */
+  pre { background: #f6f8fa; padding: 14px; border-radius: 8px; overflow: auto; font-size: 0.92em; }
+  code { font-family: Consolas, 'Courier New', monospace; }
+  .row { display:flex; gap:20px; flex-wrap:wrap; }
+  .col { flex:1 1 420px; }
+  /* Small visual helpers */
+  .endpoint { border: 1px solid #e0e0e0; padding: 12px 14px; border-radius: 8px; background: #fff; box-shadow: 0 3px 8px rgba(0,0,0,0.04); }
+  .json { white-space: pre; font-family: Consolas, 'Courier New', monospace; font-size: 0.95em; }
+  .success { color: #2e7d32; font-weight: 600; }
+  .error { color: #c62828; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Interpretación de la restricción y uso de OpenAI</h1>
+
+    <h2>🔹 Lo que realmente significa la restricción</h2>
+    <p>La frase dice:</p>
+    <blockquote style="margin:12px 0 18px 0; padding:12px 16px; background:#f6f8fa; border-left:4px solid #1976d2;">
+      “No se permite utilizar ninguna tecnología específicamente diseñada para Chatbots, pues esto brindaría una solución que no requiere construcción de componentes o desarrollo de software.”
+    </blockquote>
+
+    <p>Eso <strong>no prohíbe la IA en general</strong>, sino el uso de plataformas que ya entregan el chatbot completo, como:</p>
+
+    <div class="params">
+      <table>
+        <thead>
+          <tr>
+            <th>Tecnologías explícitamente excluidas</th>
+            <th>Motivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ManyChat, Dialogflow, IBM Watson Assistant, Microsoft Bot Framework, Rasa X, Tidio, Chatfuel</td>
+            <td>Son plataformas “no-code” o “low-code” diseñadas exclusivamente para crear chatbots sin necesidad de programar</td>
+          </tr>
+          <tr>
+            <td>Landbot, Botpress (versión hosted)</td>
+            <td>También diseñadas específicamente para flujo conversacional visual, sin desarrollo real</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note">El ejercicio busca evaluar tu capacidad de ingeniería, no que uses un constructor de bots visual.</p>
+
+    <h2>🔹 Por qué sí puedes usar OpenAI API</h2>
+
+    <p>Sí, <strong>puedes usar la API de OpenAI</strong>, y de hecho es completamente válido y defendible, siempre que cumplas con estas condiciones:</p>
+
+    <ul>
+      <li>No dependes de una plataforma chatbot, sino que tú misma implementas:
+        <ul>
+          <li>El backend Python (API REST)</li>
+          <li>El procesamiento del mensaje (llamada a OpenAI API)</li>
+          <li>El almacenamiento de las preguntas y respuestas</li>
+          <li>La interfaz web</li>
+          <li>La lógica de seguridad y validación</li>
+        </ul>
+      </li>
+      <li>OpenAI no es “una tecnología para chatbots”, sino una API general de inteligencia artificial para NLP, clasificación, embeddings, etc. Tú decides cómo la usas y cómo integras sus respuestas.</li>
+      <li>El panel de entrevistas quiere ver tu diseño, arquitectura y razonamiento técnico, no una “caja mágica”.</li>
+    </ul>
+
+    <p><strong>Por tanto, usar OpenAI es válido, siempre que construyas tú la arquitectura y el flujo.</strong></p>
+
+    <h2>🔹 Cómo puedes justificarlo en la entrevista</h2>
+
+    <p>Puedes decir algo así:</p>
+    <blockquote style="margin:12px 0 18px 0; padding:12px 16px; background:#fffde7; border-left:4px solid #fbc02d;">
+      “La restricción indica que no se pueden usar plataformas específicamente diseñadas para crear chatbots sin desarrollo. Por eso descarté herramientas como ManyChat o Dialogflow.
+      Sin embargo, utilicé la API de OpenAI como un componente cognitivo de lenguaje natural, integrado dentro de una arquitectura modular que yo misma construí.
+      Esto me permitió mantener control total del flujo, el almacenamiento, la seguridad y la escalabilidad, cumpliendo con el espíritu del requerimiento.”
+    </blockquote>
+
+    <p>Esa respuesta demuestra criterio técnico y alineación con las reglas.</p>
+
+    <h2>🔹 Cómo combinar ambas ideas (IA + arquitectura limpia)</h2>
+
+    <p>Una opción elegante sería esta:</p>
+    <ul>
+      <li><strong>Frontend web</strong> → interfaz de chat simple (HTML/JS)</li>
+      <li><strong>Backend FastAPI (Python)</strong> → recibe mensajes, gestiona sesiones y controla la lógica</li>
+      <li><strong>Repositorio local (SQLite o JSON)</strong> → guarda pares pregunta/respuesta “entrenados”</li>
+      <li><strong>Módulo OpenAI</strong> → responde cuando no hay coincidencias o contextualiza</li>
+      <li><strong>Modo híbrido</strong> → si la pregunta está en la base, responde localmente; si no, pregunta a OpenAI</li>
+    </ul>
+
+    <p>Así cumples con:</p>
+    <ul>
+      <li>REQ-05 a REQ-13 (funcionalidad completa),</li>
+      <li>mantienes arquitectura profesional (DDD + REST),</li>
+      <li>y demuestras pensamiento evolutivo y técnico avanzado.</li>
+    </ul>
+
+    <div class="footer">Generado según tu solicitud — explicación literal y aplicable para la entrega.</div>
+  </div>
+</body>
+</html>

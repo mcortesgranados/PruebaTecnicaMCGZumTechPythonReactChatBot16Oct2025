@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Evaluación Xumtech - Justificación REQ</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #fafbfc; color: #23272f; margin: 0; padding: 0; }
+  .container { max-width: 950px; margin: 40px auto; background: #fff; box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-radius: 10px; padding: 32px 40px; }
+  h1 { color: #1565c0; }
+  h2 { color: #2e7d32; margin-top: 32px; }
+  h3 { color: #7b1fa2; margin-top: 24px; }
+  .note { background: #e3f2fd; border-left: 4px solid #1976d2; padding: 16px 20px; margin: 18px 0; border-radius: 7px; }
+  .note ul { list-style: disc inside; margin: 0; padding-left: 1.2em; }
+  .note li { margin-bottom: 3px; line-height: 1.35; }
+  .note p { margin: 0 0 6px 0; line-height: 1.5; }
+  .footer { text-align: right; color: #888; font-size: 1em; margin-top: 40px; }
+  .tag { background: #e3f2fd; color: #1565c0; border-radius: 4px; padding: 3px 8px; margin-left: 6px; font-size: 0.95em; }
+  dt { color: #2e7d32; font-weight: bold; margin-top: 10px; }
+  dd { margin-bottom: 10px; }
+  .params table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+  .params th, .params td { border: 1px solid #ccc; padding: 6px; }
+  .important { background: #fffde7; border-left: 4px solid #fbc02d; padding: 12px 18px; margin: 18px 0; border-radius: 5px; }
+  .sideEffects ul, .solid ul { margin: 0; padding-left: 20px; }
+  @media (max-width: 600px) { .container { padding: 16px 8px; } }
+  pre { background: #f6f8fa; padding: 18px; border-radius: 8px; overflow: auto; font-size: 0.95em; line-height: 1.45; }
+  code { font-family: Consolas, 'Courier New', monospace; }
+  .row { display:flex; gap:20px; flex-wrap:wrap; }
+  .col { flex:1 1 420px; }
+  .endpoint { border: 1px solid #e0e0e0; padding: 12px 14px; border-radius: 8px; background: #fff; box-shadow: 0 3px 8px rgba(0,0,0,0.04); }
+  .json { white-space: pre; font-family: Consolas, 'Courier New', monospace; font-size: 0.95em; }
+  .success { color: #2e7d32; font-weight: 600; }
+  .error { color: #c62828; font-weight: 600; }
+  .tree-title { margin-bottom: 12px; color: #1565c0; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>✅ Evaluación Xumtech - Justificación de REQ por Arquitectura Python</h1>
+
+<h2>PROPÓSITO DEL EJERCICIO</h2>
+
+<div class="note">
+<span class="tag">📌 REQ-01</span>
+<p>Mostrar habilidades técnicas y consultivas.</p>
+<ul>
+  <li>La solución incluye backend Python modular, frontend web simple, integración con OpenAI API, almacenamiento local y comunicación REST.</li>
+  <li>Demuestra diseño, desarrollo de software, seguridad y escalabilidad.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">📌 REQ-02</span>
+<p>Uso libre de tecnologías, sin plataformas prehechas de chatbot.</p>
+<ul>
+  <li>Se utilizan FastAPI, OpenAI API, SQLite/JSON y frontend web estándar.</li>
+  <li>No se usan plataformas “no-code” de chatbot (ManyChat, Dialogflow, Rasa X, etc.).</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">📌 REQ-03</span>
+<p>Conocimiento completo del código.</p>
+<ul>
+  <li>Cada módulo tiene funciones claras:</li>
+  <li>🏢 <code>domain/service/conversation_rules.py</code> → reglas de negocio y procesamiento de mensajes</li>
+  <li>👤 <code>domain/model/message.py</code> → entidades Message y Response</li>
+  <li>✅ <code>application/service/command/send_message_service.py</code> → orquesta lógica de envío y respuesta</li>
+  <li>💾 <code>adapter/persistence/message_repository_adapter.py</code> → almacenamiento de pares pregunta-respuesta</li>
+  <li>🌐 <code>adapter/rest/chatbot_controller.py</code> → API REST para frontend</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">📌 REQ-04</span>
+<p>Evaluar resolución y tolerancia a presión.</p>
+<ul>
+  <li>La solución modular permite ajustes en tiempo real y mejoras durante la entrevista.</li>
+</ul>
+</div>
+
+<h2>INSTRUCCIONES GENERALES</h2>
+
+<div class="note">
+<span class="tag">💬 REQ-05</span>
+<p>Chatbot responde al menos 10 consultas.</p>
+<ul>
+  <li><code>MessageRepositoryAdapter</code> contiene 10 pares pregunta-respuesta.</li>
+  <li><code>conversation_rules.py</code> maneja la lógica para responder cada consulta.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">💻 REQ-06</span>
+<p>Ejecutable en navegador sin instalación.</p>
+<ul>
+  <li><code>resources/static/index.html</code> es un frontend web simple, sin plugins o extensiones.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">🌐 REQ-07</span>
+<p>Compatible con navegadores populares.</p>
+<ul>
+  <li>HTML y JS estándar aseguran ejecución en Chrome, Firefox, Edge o Safari.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">📂 REQ-08</span>
+<p>Página ligera con ventana de chat.</p>
+<ul>
+  <li><code>index.html</code> tiene un div que carga la ventana de chat; puede abrirse automáticamente o con botón.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">⏱️ REQ-09</span>
+<p>Respuesta en menos de 5 segundos.</p>
+<ul>
+  <li>FastAPI maneja el endpoint <code>/send_message</code> con lógica síncrona/asincrónica.</li>
+  <li>OpenAI API o repositorio local responden <5s.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">📝 REQ-10</span>
+<p>Mostrar máximo 10 preguntas y explicar entrenamiento.</p>
+<ul>
+  <li>Base local inicializada con 10 preguntas.</li>
+  <li>Nuevas preguntas se agregan a SQLite o JSON, explicable en entrevista.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">❓ REQ-11</span>
+<p>Contextualización de consultas.</p>
+<ul>
+  <li><code>conversation_rules.py</code> busca coincidencias exactas o similares.</li>
+  <li>Si no encuentra coincidencia: devuelve mensaje “No entendí tu consulta…”.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">💾 REQ-12</span>
+<p>Repositorio para consultas/respuestas.</p>
+<ul>
+  <li><code>message_repository_adapter.py</code> implementa CRUD sobre SQLite/JSON.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">🔌 REQ-13</span>
+<p>Comunicación REST segura con repositorio.</p>
+<ul>
+  <li><code>chatbot_controller.py</code> expone endpoints <code>/send_message</code> y <code>/get_conversation</code>.</li>
+  <li>HTTPS y autenticación por token opcional.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">⚙️ REQ-14</span>
+<p>Justificación de diseño y mejoras.</p>
+<ul>
+  <li>Arquitectura modular (DDD + capa aplicación + adaptadores) separa dominio, negocio y persistencia.</li>
+  <li>Facilita escalabilidad y mantenimiento.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">🚀 REQ-15</span>
+<p>Escalabilidad.</p>
+<ul>
+  <li>Backend puede migrar a AWS Lambda/EC2.</li>
+  <li>SQLite → PostgreSQL/RDS.</li>
+  <li>Integrar microservicios para NLP avanzado.</li>
+  <li>Soporte multi-API y múltiples usuarios.</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">⚖️ REQ-16</span>
+<p>Limitaciones y mejoras.</p>
+<ul>
+  <li>Dependencia OpenAI API para consultas no locales.</li>
+  <li>Mejora: embeddings y similarity search para autonomía.</li>
+  <li>Otra mejora: integración multicanal (WhatsApp, Web, etc.).</li>
+</ul>
+</div>
+
+<div class="note">
+<span class="tag">🔒 REQ-17</span>
+<p>Seguridad.</p>
+<ul>
+  <li>HTTPS obligatorio en REST.</li>
+  <li>Validación de entradas en FastAPI.</li>
+  <li>API Key OpenAI segura en variables de entorno.</li>
+  <li>Futuro JWT o autenticación por usuario.</li>
+</ul>
+</div>
+
+<h2 class="tree-title">📁 Resumen de Arquitectura Python</h2>
+<ul>
+  <li>Frontend web: <code>resources/static/index.html</code></li>
+  <li>Backend REST: <code>src/main/python/chatbot/main.py</code></li>
+  <li>Dominio: <code>domain/model/ & domain/service/</code></li>
+  <li>Aplicación: <code>application/service/command/ & query/</code></li>
+  <li>Persistencia: <code>adapter/persistence/message_repository_adapter.py</code></li>
+  <li>Eventos: <code>adapter/events/</code></li>
+  <li>Configuración: <code>config/app_config.py</code></li>
+</ul>
+
+<p class="success">✅ Esta estructura cumple todos los requerimientos REQ-01 a REQ-17 y permite argumentar diseño, escalabilidad, seguridad y justificación de decisiones en la entrevista.</p>
+
+<div class="footer">Documentación generada por Manuela</div>
+</div>
+</body>
+</html>
